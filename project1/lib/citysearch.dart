@@ -22,33 +22,32 @@ class _CitySearchState extends State<CitySearch> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-     
       child: Column(
         children: [
           const CustomCircleImg(
             imagePath: 'assets/img/weather_img.jpg',
             radius: 80,
           ),
-          const SizedBox(height: 20), // Mengatur jarak antara gambar dan TextField
+          const SizedBox(height: 20),
           TextField(
             controller: myController,
             onChanged: widget.onCityChanged,
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 18, // Ukuran font teks
-              fontWeight: FontWeight.bold, // Berat teks
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
             ),
             decoration: InputDecoration(
-              hintText: 'Enter city name', // Hint text
-              hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)), // Style hint text
+              hintText: 'Enter city name',
+              hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10), // Mengatur borderRadius
-                borderSide: BorderSide.none, // Menghilangkan border
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
               ),
               filled: true,
-              fillColor: Color.fromARGB(255, 36, 73, 30).withOpacity(0.1), // Warna latar belakang TextField
-              contentPadding: const EdgeInsets.symmetric(vertical: 12), // Padding konten dalam TextField
+              fillColor: const Color.fromARGB(255, 36, 73, 30).withOpacity(0.1),
+              contentPadding: const EdgeInsets.symmetric(vertical: 12),
             ),
           ),
         ],

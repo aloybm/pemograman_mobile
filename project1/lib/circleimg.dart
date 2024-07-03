@@ -23,7 +23,8 @@ class CustomCircleImg extends StatelessWidget {
         ),
         const Text(
           'Weather App',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
         ),
       ],
     );

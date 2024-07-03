@@ -12,16 +12,16 @@ class WeatherCard extends StatelessWidget {
     required this.onTap,
   });
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap as void Function()?,
       child: Card(
-        elevation: 6, 
+        elevation: 6,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12), 
+          borderRadius: BorderRadius.circular(12),
         ),
-        color: Colors.green.shade900, 
+        color: Colors.green.shade900,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -29,10 +29,10 @@ class WeatherCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 13.0,
-                  color: Colors.white, 
-                  fontWeight: FontWeight.bold, 
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

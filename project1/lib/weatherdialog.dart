@@ -9,11 +9,11 @@ class WeatherDialog {
           backgroundColor: Colors.green.shade900, 
           title: Text(
             title,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), 
+            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold), 
           ),
           content: Text(
             content,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
           actions: <Widget>[
             TextButton(

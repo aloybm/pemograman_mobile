@@ -21,15 +21,14 @@ class _WeatherAppState extends State<WeatherApp> {
 
   void _handleCityChanged(String value) {
     setState(() {
-      _city = value; 
+      _city = value;
     });
-    fetchWeather(); 
+    fetchWeather();
   }
-
 
   Future<void> fetchWeather() async {
     final Uri url = Uri.parse(
-        'https://api.openweathermap.org/data/2.5/weather?q=$_city&appid=&units=metric');
+        'https://api.openweathermap.org/data/2.5/weather?q=$_city&appid=c9140716115fb8ffb145a849d60c68a4&units=metric');
     final response = await http.get(url);
     final data = json.decode(response.body);
     setState(() {
@@ -37,7 +36,6 @@ class _WeatherAppState extends State<WeatherApp> {
       _temperature = data['main']['temp'];
       _wind = data['wind']['speed'];
       _pressure = data['main']['pressure'];
-
     });
   }
 
@@ -59,6 +57,8 @@ class _WeatherAppState extends State<WeatherApp> {
         CitySearch(onCityChanged: _handleCityChanged),
         Text(
           _city,
+          style: const TextStyle(
+              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10.0),
         Row(
@@ -72,7 +72,7 @@ class _WeatherAppState extends State<WeatherApp> {
               },
             ),
             WeatherCard(
-              title: 'Temperature',
+              title: '"Temperature"',
               content: '$_temperature°C',
               onTap: () {
                 _showWeatherDialog('Temperature', '$_temperature°C');
