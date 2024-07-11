@@ -46,12 +46,12 @@
   </div>
 </div>
 <h3>Edit History Page </h3>
-<div style="display: flex; flex-direction: row; align-items: center;">
-  <div style="flex: 1;">
+<div style="display: flex; justify-content: space-around; align-items: center;">
+  <div style="text-align: center;">
     <h4>Success Update Weather Data</h4>
     <img src="https://github.com/aloybm/pemograman_mobile/assets/100351038/81e0f1fe-02fd-4480-aea8-2d91b74dd8f5" width="215" height="480">
   </div>
-  <div style="flex: 1;">
+  <div style="text-align: center;">
     <h4>Error Update Weather Data</h4>
     <img src="https://github.com/aloybm/pemograman_mobile/assets/100351038/e12c3cac-03a3-40a6-bbcc-e4fa77a4f4bb" width="215" height="480">
   </div>
@@ -62,4 +62,8 @@
 </div>
 
 <h2>Demo App</h2>
-https://github.com/aloybm/pemograman_mobile/assets/100351038/66e654ac-94c4-40d1-948e-4e48e20d572a
+
+
+https://github.com/aloybm/pemograman_mobile/assets/100351038/ecf306a6-f74e-4451-ba47-60c6cc58a33e
+
+
