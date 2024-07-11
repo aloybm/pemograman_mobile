@@ -41,7 +41,7 @@ class HomeScreenState extends State<HomeScreen> {
                 );
               } else if (value == 'Logout') {
                 await FirebaseAuth.instance.signOut();
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const StartScreen()),
                 );

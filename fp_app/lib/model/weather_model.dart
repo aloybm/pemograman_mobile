@@ -41,12 +41,23 @@ class WeatherModel {
   }
 
   static Future<void> addWeatherData(
-      User user, Map<String, dynamic> weatherData) async {
+      BuildContext context, User user, Map<String, dynamic> weatherData) async {
     try {
       weatherData['user'] = user.uid;
       await weatherCollection.add(weatherData);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Weather data added successfully'),
+          backgroundColor: Colors.green,
+        ),
+      );
     } catch (e) {
-      throw Exception('Error adding weather data: $e');
+     ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error adding weather data: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 
@@ -59,11 +70,17 @@ class WeatherModel {
     }
   }
 
-  static Future<void> deleteWeatherData(String docId) async {
+   static Future<void> deleteWeatherData(BuildContext context, String docId) async {
     try {
       await weatherCollection.doc(docId).delete();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Weather data deleted successfully'),
+          backgroundColor: Colors.green,
+        ),
+      );
     } catch (e) {
-      throw Exception('Error deleting document: $e');
+       throw Exception('Error deleting weather data: $e');
     }
   }
 

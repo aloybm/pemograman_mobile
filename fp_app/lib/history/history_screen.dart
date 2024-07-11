@@ -18,7 +18,7 @@ class HistoryScreenState extends State<HistoryScreen> {
 
   Future<void> _deleteWeather(String docId) async {
     try {
-      await WeatherModel.deleteWeatherData(docId);
+      await WeatherModel.deleteWeatherData(context, docId);
     } catch (e) {
       WeatherModel.showDialogApp(context, "Error", "Error delete for this id");
     }

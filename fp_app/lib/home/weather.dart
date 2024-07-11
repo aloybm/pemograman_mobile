@@ -33,7 +33,7 @@ class WeatherAppState extends State<WeatherApp> {
   }
 
   void _searchWeather() async {
-    FocusScope.of(context).unfocus(); 
+    FocusScope.of(context).unfocus();
     if (_formKey.currentState!.validate()) {
       setState(() {
         _city = _cityController.text;
@@ -41,6 +41,7 @@ class WeatherAppState extends State<WeatherApp> {
       await fetchWeather();
       if (!_errorOccurred) {
         await WeatherModel.addWeatherData(
+            context,
             user!,
             ({
               "city": _city,
