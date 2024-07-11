@@ -11,6 +11,9 @@
 </div>
 
 <h2>Widget Variety </h2>
+![image](https://github.com/aloybm/pemograman_mobile/assets/100351038/0e9f3e88-80c6-437a-a261-e0978a480e19)
+
+
 
 <h2>Handle Data & Form Validation</h2>
 <h3>Login Page </h3>
@@ -76,7 +79,9 @@
 </div>
 
 <h2>Demo App</h2>
-https://github.com/aloybm/pemograman_mobile/assets/100351038/5bb70b13-1ef9-4572-ab08-a0024af2ddf8
+https://github.com/aloybm/pemograman_mobile/assets/100351038/c5aa3a47-a837-4bda-9ad1-c8d36fde35dc
+
+
 
 
 
