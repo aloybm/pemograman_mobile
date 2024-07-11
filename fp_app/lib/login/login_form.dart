@@ -5,13 +5,47 @@ class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
 
   @override
-  _LoginFormState createState() => _LoginFormState();
+  LoginFormState createState() => LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  String? _emailError;
+  String? _passwordError;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.addListener(() => _validateEmail(_emailController.text));
+    _passwordController.addListener(() => _validatePassword(_passwordController.text));
+  }
+
+  void _validateEmail(String value) {
+    setState(() {
+      if (value.isEmpty) {
+        _emailError = 'Please enter your email';
+      } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+        _emailError = 'Please enter a valid email address';
+      } else {
+        _emailError = null;
+      }
+    });
+  }
+
+  void _validatePassword(String value) {
+    setState(() {
+      if (value.isEmpty) {
+        _passwordError = 'Please enter your password';
+      } else if (value.length < 8) {
+        _passwordError = 'Password must be at least 8 characters long';
+      } else {
+        _passwordError = null;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +59,6 @@ class _LoginFormState extends State<LoginForm> {
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
-              color: Colors.deepPurple,
             ),
           ),
           const SizedBox(height: 20),
@@ -33,41 +66,31 @@ class _LoginFormState extends State<LoginForm> {
             controller: _emailController,
             decoration: InputDecoration(
               labelText: 'Email',
-              prefixIcon: const Icon(Icons.email, color: Colors.deepPurple), // Change icon color
+              prefixIcon: const Icon(Icons.email),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               filled: true,
               fillColor: Colors.white,
+              errorText: _emailError,
             ),
-            style: TextStyle(color: Colors.deepPurple), // Change input text color
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your email';
-              }
-              return null;
-            },
+            onChanged: (value) => _validateEmail(value),
           ),
           const SizedBox(height: 20),
           TextFormField(
             controller: _passwordController,
             decoration: InputDecoration(
-              labelText: 'Password',// Change label text color
-              prefixIcon: const Icon(Icons.lock, color: Colors.deepPurple), // Change icon color
+              labelText: 'Password',
+              prefixIcon: const Icon(Icons.lock),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               filled: true,
               fillColor: Colors.white,
+              errorText: _passwordError,
             ),
-            style: TextStyle(color: Colors.deepPurple), // Change input text color
             obscureText: true,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your password';
-              }
-              return null;
-            },
+            onChanged: (value) => _validatePassword(value),
           ),
           const SizedBox(height: 30),
           LoginButton(
@@ -78,5 +101,12 @@ class _LoginFormState extends State<LoginForm> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }

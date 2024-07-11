@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:quizapp/data/categories.dart';
 import 'package:quizapp/models/category.dart';
 import 'package:quizapp/models/question.dart';
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
 
 class NewQuestion extends StatefulWidget {
   const NewQuestion({super.key});
@@ -17,18 +21,49 @@ class _NewQuestionState extends State<NewQuestion> {
   var _enteredQuestion = '';
   var _enteredAnswers = '';
   var _selectedCategory = Categories.mobileProgramming;
+  var _isSending = false;
 
-  void _saveItem() {
+  // Create 
+  void _saveItem() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      Navigator.of(context).pop(
-        Question(
-          id: DateTime.now().toString(), 
-          text: _enteredQuestion, 
-          answers: [_enteredAnswers], 
-          category: categories[_selectedCategory]!
-        )
-      );
+
+      // add loading
+      setState(() {
+        _isSending = true;
+      });
+
+      // Connecting backend
+      final url = Uri.https('quiz-app-d9838-default-rtdb.asia-southeast1.firebasedatabase.app',
+          'question-list.json');
+
+      final response = await http.post(url,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: json.encode({
+            'text': _enteredQuestion,
+            'answers': [_enteredAnswers],
+            'category': categories[_selectedCategory]!.title
+          }));
+
+      final Map<String, dynamic> resData = json.decode(response.body);
+
+      if (!context.mounted) {
+        return;
+      }
+      Navigator.of(context).pop(Question(
+          id: resData['name'],
+          text: _enteredQuestion,
+          answers: [_enteredAnswers],
+          category: categories[_selectedCategory]!));
+
+      // Without backend
+      // Navigator.of(context).pop(Question(
+      //     id: DateTime.now().toString(),
+      //     text: _enteredQuestion,
+      //     answers: [_enteredAnswers],
+      //     category: categories[_selectedCategory]!));
     }
   }
 
@@ -115,14 +150,14 @@ class _NewQuestionState extends State<NewQuestion> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {
+                    onPressed: _isSending ? null : () {
                       _formKey.currentState!.reset();
                     },
                     child: const Text('Reset'),
                   ),
                   ElevatedButton(
-                    onPressed: _saveItem,
-                    child: const Text('Add Item'),
+                    onPressed: _isSending ? null : _saveItem,
+                    child: _isSending ? const SizedBox(height: 16, width: 16, child: CircularProgressIndicator(),) : const Text('Add Item'),
                   ),
                 ],
               )

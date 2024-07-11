@@ -1,48 +1,45 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fp_app/model/weather_model.dart';
 
-
-class RegisterButton extends StatelessWidget {
+class RegisterButton extends StatefulWidget {
   const RegisterButton({
     super.key,
     required this.formKey,
     required this.emailController,
     required this.passwordController,
-    required this.onRegister,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final VoidCallback onRegister;
+
+  @override
+  RegisterButtonState createState() => RegisterButtonState();
+}
+
+class RegisterButtonState extends State<RegisterButton> {
+  bool _loading = false;
 
   Future<void> _register(BuildContext context) async {
-    if (formKey.currentState?.validate() ?? false) {
+    if (widget.formKey.currentState?.validate() ?? false) {
+      setState(() {
+        _loading = true;
+      });
+
       try {
-        final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
+        await WeatherModel.register(
+          context,
+          widget.emailController.text,
+          widget.passwordController.text,
         );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Registration successful! Welcome, ${credential.user?.email}')),
-        );
-        onRegister(); // Navigate to login page
-      } on FirebaseAuthException catch (e) {
-        String errorMessage;
-        if (e.code == 'weak-password') {
-          errorMessage = 'The password provided is too weak.';
-        } else if (e.code == 'email-already-in-use') {
-          errorMessage = 'The account already exists for that email.';
-        } else {
-          errorMessage = 'An error occurred. Please try again.';
-        }
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(errorMessage)),
-        );
+
+        setState(() {
+          _loading = false;
+        });
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('An error occurred. Please try again.')),
-        );
+        setState(() {
+          _loading = false;
+        });
       }
     }
   }
@@ -52,20 +49,27 @@ class RegisterButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => _register(context),
+        onPressed: _loading ? null : () => _register(context),
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 15.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          backgroundColor: Colors.deepPurple,
         ),
-        child: const Text(
-          'Register',
-          style: TextStyle(fontSize: 18.0, color: Colors.white),
-        ),
+        child: _loading
+            ? const SizedBox(
+                height: 20.0,
+                width: 20.0,
+                child: CircularProgressIndicator(
+                  strokeWidth: 3.0,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              )
+            : const Text(
+                'Register',
+                style: TextStyle(fontSize: 18.0),
+              ),
       ),
     );
   }
 }
-

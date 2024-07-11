@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:fp_app/register/register_form.dart';
 
-
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key, required this.onRegister});
-
-  final VoidCallback onRegister;
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Card(
-          color: Colors.white,
-          elevation: 5.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: RegisterForm(onRegister: onRegister),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register'),
+      ),
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child:  RegisterForm(),
+            ),
           ),
         ),
-      ),
     );
   }
 }
-
