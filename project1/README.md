@@ -1,16 +1,9 @@
-# sec_app
+## Tugas 1 : Flutter and Dart Fundamentals (Weather App)
+<img src="https://github.com/wahyuandhikarizaldi/Pemrograman-Mobile/assets/113814423/9db17acd-5d4e-4f96-b938-7daf0267ba70" alt="portoflutter" width="700">
 
-A new Flutter project.
+### Tampilan App
+<img src="https://github.com/user-attachments/assets/3472e8a8-1ba0-46da-b214-a10daa6676e9" alt="portoflutter" width="700">
 
-## Getting Started
+### Demo App
+https://github.com/user-attachments/assets/f72208b8-a813-46f4-a856-98ac598e4d20
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
