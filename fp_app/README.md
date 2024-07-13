@@ -1,6 +1,6 @@
 <h1>Final Project: WeatherApp using Firestore Database and Authentication</h1>
 
-<h2>App Overvier</h2>
+<h2>App Overview</h2>
 <div style="display: flex; align-items: center;">
   <div style="flex: 1;">
     <img src="https://github.com/aloybm/pemograman_mobile/assets/100351038/221328f7-9ffb-4e06-a2fb-33505adaa1fd">
@@ -10,12 +10,31 @@
   </div>
 </div>
 
-<h2>Widget Variety </h2>
-![image](https://github.com/aloybm/pemograman_mobile/assets/100351038/0e9f3e88-80c6-437a-a261-e0978a480e19)
+## Widget Variety
+
+![Widget Variety](https://github.com/aloybm/pemograman_mobile/assets/100351038/0e9f3e88-80c6-437a-a261-e0978a480e19)
+
+- **auth_state_widget**: widget untuk melakukan pengecekan apakah user sudah login atau belum
+- **edit_weather_screen**: widget untuk mengupdate history city weather data
+- **history_screen**: widget untuk menampilkan list history
+- **weather_dialog**: widget untuk menampilkan detail history, tombol navigator ke edit, dan tombol delete
+- **home**: widget untuk menampilkan tampilan home
+- **weather**: widget untuk mencari cuaca kota
+- **weather_info_card** dan **weather_info_row**: widget untuk menampilkan card data cuaca
+- **folder login**: widget untuk form login
+- **folder register**: widget untuk form register
+- **start_screen**: widget menampilkan start screen
+- **circleimg**: widget untuk membuat gambar berbentuk lingkaran
 
 
+## State Management
+
+- **State Implementation**: Aplikasi ini sudah menggunakan `StatefulWidget` dan `State classes`.
+- **State Modification**: Menggunakan `setState` di setiap task seperti loading, login, register, mencari cuaca kota, dan update nama kota sehingga UI secara dinamis akan terupdate berdasarkan state changes yang dikelola oleh `setState`.
+- **UI Interaction**: UI Interaction berupa `Dialog` dan `ScaffoldMessenger` pada Add data, Edit data, Delete data, Error handling, dan loading yang sudah terupdate secara dinamis.
 
 <h2>Handle Data & Form Validation</h2>
+
 <h3>Login Page </h3>
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
@@ -77,6 +96,19 @@
 <div style="display: flex; ">
     <img src="https://github.com/aloybm/pemograman_mobile/assets/100351038/7f00e81a-2f06-4214-8470-7ac22f8f952f" width="215" height="480">
 </div>
+
+## Backend
+
+- **Create**: Menambahkan data cuaca berdasarkan nama kota.
+- **Read**: Mengambil data cuaca di dalam database.
+- **Update**: Mengupdate atau mengedit nama kota lalu merubah data cuaca berdasarkan nama kota yang sudah di update yang ada di database.
+- **Delete**: Menghapus data cuaca di database.
+
+<h2>CRUD Firebase</h2>
+<img src="https://github.com/user-attachments/assets/a4d31ea7-31e7-4fcc-96b9-81397e996bd2">
+
+<h2>Authentication</h2>
+<img src="https://github.com/user-attachments/assets/611ec495-9386-4522-b0ac-bc0810027b81">
 
 <h2>Demo App</h2>
 https://github.com/aloybm/pemograman_mobile/assets/100351038/c5aa3a47-a837-4bda-9ad1-c8d36fde35dc
