@@ -18,5 +18,3 @@
 ### Display Image
 <img src="https://github.com/user-attachments/assets/c7699626-eeca-43c6-853b-9ea53b725fb9" width="700">
 
-### Display Image
-<img src="https://github.com/user-attachments/assets/c7699626-eeca-43c6-853b-9ea53b725fb9" width="700">
