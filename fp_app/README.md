@@ -1,4 +1,4 @@
-<h1>Final Project: WeatherApp using Firestore Database and Authentication</h1>
+<h1>Final Project: WeatherApp using CRUD Firebase and Authentication</h1>
 
 <h2>App Overview</h2>
 <div style="display: flex; align-items: center;">
