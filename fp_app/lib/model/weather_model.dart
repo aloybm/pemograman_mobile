@@ -8,7 +8,7 @@ import 'package:fp_app/login/login_screen.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherModel {
-  static const String _apiKey = 'c9140716115fb8ffb145a849d60c68a4';
+  static const String _apiKey = '';
   static final CollectionReference weatherCollection =
       FirebaseFirestore.instance.collection('users_weather');
 
