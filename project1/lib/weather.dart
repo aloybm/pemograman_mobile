@@ -28,7 +28,7 @@ class _WeatherAppState extends State<WeatherApp> {
 
   Future<void> fetchWeather() async {
     final Uri url = Uri.parse(
-        'https://api.openweathermap.org/data/2.5/weather?q=$_city&appid=c9140716115fb8ffb145a849d60c68a4&units=metric');
+        'https://api.openweathermap.org/data/2.5/weather?q=$_city&appid=&units=metric');
     final response = await http.get(url);
     final data = json.decode(response.body);
     setState(() {
