@@ -110,7 +110,7 @@
 <h2>Authentication</h2>
 <img src="https://github.com/user-attachments/assets/611ec495-9386-4522-b0ac-bc0810027b81">
 
-<h2>Demo App</h2>
+## Demo App
 https://github.com/aloybm/pemograman_mobile/assets/100351038/c5aa3a47-a837-4bda-9ad1-c8d36fde35dc
 
 
